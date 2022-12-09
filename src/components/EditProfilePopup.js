@@ -11,11 +11,9 @@ function EditProfilePopup(props) {
     setName(e.target.value);
   }
 
-
 	function handleDescriptionChange(e) {
     setDescription(e.target.value);
   }
-
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -23,13 +21,11 @@ function EditProfilePopup(props) {
 		props.onUpdateUser(name, description);
 	}
 
-
 	useEffect(() => {
 		setName(currentUser.name);
 		setDescription(currentUser.about);
 	}, [currentUser, props.isOpen]); 
 
-	
 	return (
 		<PopupWithForm 
 			name="profile" 

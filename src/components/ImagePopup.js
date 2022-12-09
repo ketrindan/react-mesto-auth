@@ -22,7 +22,6 @@ function ImagePopup(props) {
     }
   }
   
-  
   return (
     <section className={`popup popup_image image-popup ${props.card.name ? "popup_opened" : ""}`} onClick={handleOverlayClick}>
       <div className="popup__box">

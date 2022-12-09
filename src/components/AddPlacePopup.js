@@ -5,16 +5,13 @@ function AddPlacePopup(props) {
 	const [place, setPlace] = useState('');
 	const [link, setLink] = useState('');
 
-
 	function handleAddPlace(e) {
     setPlace(e.target.value);
   }
 
-
 	function handleAddLink(e) {
     setLink(e.target.value);
   }
-
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -22,13 +19,11 @@ function AddPlacePopup(props) {
 		props.onAddPlace(place, link);
 	}
 
-
   useEffect(() => {
     setPlace("");
     setLink("");
   }, [props.isOpen]);
 
-		
 	return (
 		<PopupWithForm 
       name="elements" 

@@ -3,30 +3,24 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card(props) {
   const currentUser = useContext(CurrentUserContext);
-
   const isOwn = props.card.owner._id === currentUser._id;
-
   const isLiked = props.card.likes.some(i => i._id === currentUser._id);
 
   const cardLikeButtonClassName = (
     `elements__like ${isLiked ? 'elements__like_active' : ''}`
   );  
 
-
   function handleClick() {
     props.onCardClick(props.card);
   }
-
 
   function handleLikeClick() {
     props.onCardLike(props.card);
   }
 
-
   function handleDeleteClick() {
     props.onCardDelete(props.card._id);
   }
-
 
   return (
     <article className="elements__item">

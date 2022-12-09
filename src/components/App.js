@@ -17,7 +17,6 @@ import Login from './Login';
 import InfoToolTip from './InfoTooltip';
 import auth from '../utils/Auth';
 
-
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
@@ -41,21 +40,17 @@ function App() {
     setEditAvatarPopupOpen(true);
   }
 
-
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
   }
-
 
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
 
-  
   function openInfoToolTip() {
     setInfoToolTipOpen(true);
   }
-
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -66,7 +61,6 @@ function App() {
     setPopupWithConfirmationOpen(true);
   }
   
-
   function closeAllPopups() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
@@ -78,7 +72,6 @@ function App() {
 
     setInfoToolTipOpen(false);
   }
-
 
   function handleUpdateUser(newName, newJob) {
     setLoading(true);
@@ -95,7 +88,6 @@ function App() {
     })
   } 
 
-
   function handleUpdateAvatar(newAvatar) {
     setLoading(true);
     api.changeAvatar(newAvatar)
@@ -110,7 +102,6 @@ function App() {
       setLoading(false);
     })
   }
-
 
   function handleAddPlaceSubmit(newPlace, newLink) {
     setLoading(true);
@@ -127,7 +118,6 @@ function App() {
     })
   }
 
-
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     
@@ -139,7 +129,6 @@ function App() {
       console.log(err);
     })
   } 
-
 
   function handleCardDelete(cardId) {
     setLoading(true);
@@ -156,7 +145,6 @@ function App() {
     })
   }
 
-
   useEffect(() => {
     Promise.all([api.getUserData(), api.getCards()])
     .then(([userData, cardsdata]) => {
@@ -166,8 +154,7 @@ function App() {
     .catch((err) => {
       console.log(err);
     })
-  }, [])
-
+  }, [isLoggedIn])
 
   function onRegistration(data) {
     auth.register(data.email, data.password)
@@ -175,7 +162,6 @@ function App() {
       setIsSuccessful(true);
       openInfoToolTip();
       history.push('/sign-in');
-      console.log(data)
     })
     .catch((err) => {
       console.log(err);
@@ -194,6 +180,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
+      setIsSuccessful(false); 
       openInfoToolTip();
     });
   }
@@ -208,10 +195,11 @@ function App() {
           setUserEmail(data.data.email);
           history.push('/');
         }
-      });
-    } else {
-      return;
-    }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } 
   }
 
   function handleSignOut() {
@@ -222,7 +210,6 @@ function App() {
   useEffect(() => {
     handleTokenCheck()
   }, [])
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -283,7 +270,7 @@ function App() {
             <Route path="/sign-in">
               <Login onSubmit={onLogin} />
             </Route>
-            <ProtectedRoute path="/" 
+            <ProtectedRoute exact path="/" 
               component={Main}
               onEditAvatar={handleEditAvatarClick}
               onEditProfile={handleEditProfileClick}
