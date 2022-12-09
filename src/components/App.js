@@ -146,14 +146,16 @@ function App() {
   }
 
   useEffect(() => {
-    Promise.all([api.getUserData(), api.getCards()])
-    .then(([userData, cardsdata]) => {
-      setCurrentUser(userData);
-      setCards(cardsdata);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    if(isLoggedIn) {
+      Promise.all([api.getUserData(), api.getCards()])
+      .then(([userData, cardsdata]) => {
+        setCurrentUser(userData);
+        setCards(cardsdata);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
   }, [isLoggedIn])
 
   function onRegistration(data) {
