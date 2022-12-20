@@ -9,11 +9,16 @@ function Header(props) {
     setMenuOpen((state) => !state);
   }
 
+  function handleSignOut() {
+    props.onSignOut();
+    setMenuOpen(false);
+  }
+
   return (
     <header className="header">
       <div className={`header__menu ${isMenuOpen ? "header__menu_opened" : ""}`}>
           <p className="header__user-email">{props.userEmail}</p>
-          <Link to="/sign-in" className="header__link" onClick={props.onSignOut}>Выйти</Link>
+          <Link to="/sign-in" className="header__link" onClick={handleSignOut}>Выйти</Link>
       </div>
       
       <div className="header__container">

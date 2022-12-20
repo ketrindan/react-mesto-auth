@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .header__link {
+  .header__menu .header__link {
     padding-right: 0;
   }
 }
@@ -22,5 +22,6 @@
   .header__link {
     font-size: 14px;
     line-height: 17px;
+    padding-right: 27px;
   }
 }
