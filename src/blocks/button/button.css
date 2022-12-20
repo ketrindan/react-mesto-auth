@@ -2,7 +2,7 @@
   box-sizing: border-box;
   background-color: transparent;
   cursor: pointer;
-  transition: 0.3s linear;
+  transition: opacity 0.3s linear;
 }
 
 .button:hover {

@@ -6,3 +6,10 @@
   align-items: center;
   margin: 60px auto 80px auto;
 }
+
+@media screen and (max-width: 1024px) {
+  .auth {
+    width: 80%;
+    margin: 40px auto;
+  }
+}
