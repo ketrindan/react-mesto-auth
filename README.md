@@ -3,7 +3,7 @@
 ## ***Проектная работа курса [Яндекс.Практикум](https://practicum.yandex.ru/)***
 
 ![image](https://raw.githubusercontent.com/ketrindan/react-mesto-auth/main/src/images/screen1.png)
-![image](https://raw.githubusercontent.com/ketrindan/react-mesto-auth/main/src/images/screen2.png)
+<img url="https://raw.githubusercontent.com/ketrindan/react-mesto-auth/main/src/images/screen2.png" alt="image" align="center" />
 
 
 ### **Описание**
